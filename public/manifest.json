@@ -1,0 +1,16 @@
+{
+  "short_name": "POSCantik",
+  "name": "POS Cantik - Ladang Peris",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2864/2864440.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#15803d",
+  "background_color": "#fefce8"
+}

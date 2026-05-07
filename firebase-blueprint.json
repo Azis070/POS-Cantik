@@ -1,0 +1,95 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "App users (Kader and Admin)",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "idNumber": { "type": "string", "description": "National ID Number" },
+        "role": { "type": "string", "enum": ["kader", "admin"] },
+        "status": { "type": "string", "enum": ["pending", "active", "rejected"] },
+        "posyanduName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "role", "status"]
+    },
+    "Child": {
+      "title": "Child",
+      "description": "Toddlers (Balita) registered in Posyandu",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "nik": { "type": "string" },
+        "birthDate": { "type": "string", "format": "date-time" },
+        "gender": { "type": "string", "enum": ["Laki-laki", "Perempuan"] },
+        "birthWeight": { "type": "number" },
+        "birthHeight": { "type": "number" },
+        "fatherName": { "type": "string" },
+        "fatherNik": { "type": "string" },
+        "fatherOccupation": { "type": "string" },
+        "motherName": { "type": "string" },
+        "motherNik": { "type": "string" },
+        "motherBirthDate": { "type": "string" },
+        "motherOccupation": { "type": "string" },
+        "kbHistory": { "type": "string" },
+        "kbReason": { "type": "string" },
+        "posyanduName": { "type": "string" },
+        "address": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "birthDate", "gender", "posyanduName"]
+    },
+    "Measurement": {
+      "title": "Measurement",
+      "description": "Monthly toddler measurement records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "childId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "weight": { "type": "number", "description": "Weight in kg" },
+        "height": { "type": "number", "description": "Height in cm" },
+        "armCircumference": { "type": "number" },
+        "headCircumference": { "type": "number" },
+        "stuntingStatus": { "type": "string", "enum": ["Normal", "Stunting", "Risiko Stunting"] },
+        "exclusiveBreastfeeding": { "type": "boolean" },
+        "completeImmunization": { "type": "boolean" },
+        "caredBy": { "type": "string" },
+        "routineToPosyandu": { "type": "boolean" },
+        "presentBKB": { "type": "boolean" },
+        "stillBreastfeeding": { "type": "boolean" },
+        "proteinAnimal3x": { "type": "boolean" },
+        "kkaFilled": { "type": "boolean" },
+        "kkaGraphAppropriate": { "type": "boolean" },
+        "congenitalDisease": { "type": "string" },
+        "infectiousDiseaseHistory": { "type": "string" },
+        "exposedToSmoke": { "type": "boolean" },
+        "healthyLatrine": { "type": "boolean" },
+        "cleanWaterSource": { "type": "boolean" },
+        "referredToHospital": { "type": "boolean" },
+        "hasBpjs": { "type": "boolean" },
+        "kaderId": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "childId", "date", "weight", "height", "kaderId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stores user profiles and roles"
+    },
+    "/children/{childId}": {
+      "schema": "Child",
+      "description": "Stores toddler information"
+    },
+    "/measurements/{measurementId}": {
+      "schema": "Measurement",
+      "description": "Stores monthly measurement records"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Libre Baskerville", serif;
+  
+  --color-brand-primary: #ec4899; /* Pink 500 */
+  --color-brand-secondary: #fff1f2; /* Rose 50 */
+  --color-brand-accent: #f472b6; /* Pink 400 */
+  --color-brand-surface: #ffffff;
+  
+  --background-image-rainbow-gradient: linear-gradient(to right, #ec4899, #f43f5e, #d946ef, #8b5cf6);
+}
+
+@layer utilities {
+  .rainbow-text {
+    @apply bg-clip-text text-transparent bg-rainbow-gradient;
+  }
+  .rainbow-bg {
+    @apply bg-rainbow-gradient;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-secondary text-slate-900 font-sans antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/90 backdrop-blur-sm border border-slate-100 shadow-sm rounded-3xl;
+}
+
+.btn-primary {
+  @apply bg-brand-primary text-white px-6 py-3 rounded-2xl font-semibold transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-brand-primary/20;
+}
+
+.btn-secondary {
+  @apply bg-brand-secondary text-brand-primary border border-brand-primary/20 px-6 py-3 rounded-2xl font-semibold transition-all hover:bg-brand-primary/10 active:scale-95;
+}
+
+.input-field {
+  @apply w-full bg-white border border-slate-200 rounded-2xl px-5 py-3.5 focus:outline-none focus:ring-4 focus:ring-brand-primary/10 transition-all placeholder:text-slate-400;
+}
